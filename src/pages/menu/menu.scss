@@ -1,0 +1,46 @@
+page-menu {
+    
+    img{
+        width: 300px;
+        text-align: center;
+    }
+    .slogan{
+        margin: -60px auto 40px auto;
+        position: relative;
+        text-align: center;
+    }
+    .bg-color{
+        background-image: url("../assets/imgs/Untitled2.jpg");
+        background-size: cover;
+    }
+    ion-list button{
+        color: #fff !important;
+        background-color: transparent !important;
+    }
+    .toolbar-title-md{
+        text-align: center;
+        font-size: 1.7rem;
+        font-weight: 600;
+        color: #000;
+    }
+    .item-ios, .item-md{
+        font-size: 15px;
+    }
+    .box {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        width: 90%;
+        padding: 10px;
+        background: rgba(0,0,0,.8);
+        box-sizing: border-box;
+        box-shadow: 0 15px 25px rgba(0,0,0,.5);
+        border-radius: 5px;
+        margin: auto auto 30px auto;
+    }
+    .box .nom, .mail{
+        text-align: center;
+        color: #fff;
+    }
+
+}

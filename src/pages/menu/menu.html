@@ -1,0 +1,41 @@
+<ion-menu [content]="content" type="overlay">
+<!-- <ion-header class="head">
+  <ion-navbar>
+    <ion-title>Menu</ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-content fullscreen class="bg-color">
+    <img src="assets/imgs/logometeo.png" alt="">
+    <p style="color: #7e9eff; font-weight: bold; size: 20px;" class="slogan">Avec le temps toujours en avance</p>
+
+  <ion-list>
+    <!-- <ion-item-divider color="primary">
+      Mon compte
+    </ion-item-divider> -->
+    <button menuClose ion-item (click)="openSettings()">
+        Carte
+        <ion-icon item-left name="map"></ion-icon>
+    </button>
+    <button menuClose ion-item (click)="openSettings()">
+        Paramètres
+        <ion-icon item-left name="settings"></ion-icon>
+    </button>
+    <button menuClose ion-item (click)="openSettings()">
+        À Propos
+        <ion-icon item-left name="information-circle"></ion-icon>
+    </button>
+    <button menuClose ion-item (click)="logout()">
+      Déconnexion
+      <ion-icon item-left name="log-out"></ion-icon>
+    </button>
+  </ion-list>
+
+  <div class="box" *ngFor="let member of members">
+      <div class="nom">{{ member.fullname }}</div>
+      <div class="mail">{{ member.mail }}</div>
+  </div>
+</ion-content>
+</ion-menu>
+
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>

@@ -1,0 +1,25 @@
+<ion-content>
+  <img src="assets/imgs/logometeo.png" alt="">
+  <p style="color: #7e9eff; font-weight: bold; size: 20px;" class="slogan">Avec le temps toujours en avance</p> 
+  <!-- <h3><i primary class="fa fa-sign-in fa-lg"></i></h3> -->
+  <br/>
+  <br/>
+
+  <div class="box">
+    <h2>CONNEXION</h2>
+
+        <div class="inputBox">
+            <input type="text" name="" required="" [(ngModel)]="mail">
+            <label>E-mail</label>
+        </div>
+        <div class="inputBox">
+            <input type="password" name="" required="" [(ngModel)]="secret">
+            <label>Mot de passe</label>
+        </div>
+        <button ion-button class="login signin" (click)="login()">SE CONNECTER</button>
+        <button ion-button class="login signup" (click)="signup()">S'INSCRIRE</button>
+
+  </div>
+
+  <!-- <p style="color:#fff; font-weight: bold;">Mot de passe oublié ?</p>  -->
+</ion-content>
