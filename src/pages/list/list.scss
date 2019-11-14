@@ -1,0 +1,32 @@
+page-list {
+    .accordion-list {
+        background-color: transparent !important;
+        height: 100%;
+    }
+    .section-active {
+        background-color: #3B7646;
+        color: #f4f4f4;
+    }
+    // .child {
+    //     background: #e8e7e6;
+    //     color: #222;
+    //     margin-bottom: 4px;
+    // }
+    .child-item {
+        background: #f3f2f1;
+    }
+    .head{
+        margin: 0px;
+        width: 100%;
+        padding: 0px;
+    }
+    .list-ios, .list-md {
+        margin: -1px 0px 0px;
+    }
+    ion-searchbar{
+        color: #f4f4f4;
+    }
+    .searchbar-md .searchbar-input{
+        background-color: #f4f4f4;
+    }
+}

@@ -9,7 +9,7 @@
     <ion-title>Paramètre</ion-title>
     <ion-buttons start>
         <button ion-button icon only (click)="saveChange()">
-          <ion-icon name="checkmark"></ion-icon>
+          <ion-icon name="checkmark" style="size: 20px"></ion-icon>
         </button>
     </ion-buttons>
   </ion-navbar>
@@ -17,6 +17,7 @@
 
 <ion-content padding>
     <br/>
-    <input type="text" placeholder="Nom Complet" [(ngModel)]="fullname" (focus)="selectText($event)">
-    <input type="text" placeholder="Email" [(ngModel)]="mail" (focus)="selectText($event)">
+    <input type="text" placeholder="Nom Complet" [(ngModel)]="fullname" (focus)="selectText($event)" style="margin: 5px 20px;">
+    <input type="text" placeholder="Email" [(ngModel)]="mail" (focus)="selectText($event)" style="margin: 5px 20px;">
+    <button ion-button block>Sauvegarder</button>
 </ion-content>

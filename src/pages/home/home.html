@@ -1,25 +1,82 @@
 <ion-header>
   <ion-navbar color="tmp">
-    <ion-buttons start>
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
-    </ion-buttons>
-    <ion-searchbar [(ngModel)]="ville" placeholder="Rechercher" autocomplete="on" showCancelButton cancelButtonText=""></ion-searchbar>
+    <ion-toolbar>
+        <ion-searchbar [(ngModel)]="ville" placeholder="Rechercher" autocomplete="on" showCancelButton cancelButtonText="" id="rechercheVille"></ion-searchbar>
+    </ion-toolbar>
+      <ion-icon name="refresh"></ion-icon>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class='home'>
-  <ion-grid *ngIf="weather">
+<ion-content class='home'>
+
+<ion-grid *ngIf="weather">
+  <h4 class="location">{{weather.name}}, {{weather.sys.country}}</h4>
+  <div class="icon"><img src="http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png" alt=""></div>
+  <h1 class="temperature">{{weather.main.temp}}&deg;</h1>
+  <h3 class="desc">{{ traduction(weather.weather[0].description) }}</h3>
+  <p style="margin-left: 5px">Dernière mise à jour: <br/>{{ GetDate() }}</p>
+
+  <ion-row>
+    <ion-col>
+      <ion-list>
+        <ion-grid class="card-list">
+          <ion-row class="rowDetail">
+            <ion-col col-6 class="itemName" style="color: #3B7646">
+              <ion-icon name="cloud"></ion-icon>
+              Pressure
+            </ion-col>
+            <ion-col col-6 class="col_ion">{{ weather.main.pressure}}HPa</ion-col>
+          </ion-row>
+          <ion-row class="rowDetail">
+            <ion-col col-6 class="itemName" style="color: #3B7646">
+              <ion-icon name="umbrella"></ion-icon>
+              Humidité
+            </ion-col>
+            <ion-col col-6 class="col_ion">{{ weather.main.humidity }}%</ion-col>
+          </ion-row>
+          <ion-row class="rowDetail">
+            <ion-col col-6 class="itemName" style="color: #3B7646">
+              <ion-icon name="compass"></ion-icon>
+              Direction du Vent
+            </ion-col>
+            <ion-col col-6 class="col_ion">{{ windDirection(weather.wind.deg) }}</ion-col>
+          </ion-row>
+          <ion-row class="rowDetail">
+            <ion-col col-6 class="itemName" style="color: #3B7646">
+              <ion-icon name="speedometer"></ion-icon>
+              Vitesse du Vent
+            </ion-col>
+            <ion-col col-6 class="col_ion">{{ weather.wind.speed}}M/S</ion-col>
+          </ion-row>
+          <ion-row class="rowDetail">
+            <ion-col col-6 class="itemName" style="color: #3B7646">
+              <ion-icon name="ios-globe-outline"></ion-icon>
+              Coordonnées
+            </ion-col>
+            <ion-col col-6 class="col_ion">[{{ weather.coord.lon }}, {{ weather.coord.lat }}]</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+  <div style="margin-left: 5px">Lever du Soleil: {{ GetDay(weather.sys.sunrise) }}</div>
+  <div style="margin-left: 5px">Coucher du Soleil: {{ GetDay(weather.sys.sunset) }}</div>
+</ion-grid>
+
+  <!-- <ion-grid *ngIf="weather">
       <ion-row>
         <ion-col width-50 offset-25>
-          <h2 class="location">{{weather.name}}, {{weather.sys.country}}</h2>
+          <h4 class="location">{{weather.name}}, {{weather.sys.country}}</h4>
           <div class="icon"><img src="http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png" alt=""></div>
-          <h3 class="desc">{{ traduction(weather.weather[0].description) }}</h3>
           <h1 class="temperature">{{weather.main.temp}}&deg;</h1>
+          <h3 class="desc">{{ traduction(weather.weather[0].description) }}</h3>
         </ion-col>
       </ion-row>
-      <!-- <ion-row>
+      <ion-row>
         <ion-col width-100>
           <ion-list>
             <ion-item>
@@ -33,7 +90,7 @@
             </ion-item>
           </ion-list>
         </ion-col>
-      </ion-row> -->
+      </ion-row>
       <ion-card class="card-ion">
         <ion-card-content>
           <ion-card-header class="header">Détails</ion-card-header>
@@ -112,5 +169,76 @@
           </ion-grid>
         </ion-card-content>
       </ion-card>
-  </ion-grid>
+  </ion-grid> -->
+
+  <ion-segment  class="SwipedTabs-tabs"  >
+      <ion-segment-button *ngFor='let tab of tabs ; let i = index ' value="IngoreMe" (click)="selectTab(i)"
+      [ngClass]='{ "SwipedTabs-activeTab" : ( this.SwipedTabsSlider  && ( this.SwipedTabsSlider.getActiveIndex() === i || (  tabs.length -1 === i&& this.SwipedTabsSlider.isEnd()))) }' >
+        {{tab}}
+      </ion-segment-button>
+    </ion-segment>
+  
+    <!-- here is our dynamic line  "indicator"-->
+    <div id='indicator' class="SwipedTabs-indicatorSegment" [ngStyle]="{'width.%': (100/this.tabs.length)}"></div>
+  
+    <ion-slides #SwipedTabsSlider  (ionSlideDrag)="animateIndicator($event)"
+                (ionSlideWillChange)="updateIndicatorPosition()"
+                (ionSlideDidChange)="updateIndicatorPosition()"
+                (pan)="updateIndicatorPosition()"
+                [pager]="false"
+          >
+      <ion-slide>
+        <ion-grid *ngIf="weather2">
+            <ion-list>
+                <ion-item>
+                  <ion-avatar item-start>
+                      <img src="http://openweathermap.org/img/w/{{weather2.list[0].weather[0].icon}}.png" alt="">
+                  </ion-avatar>
+                  <h2>Date: {{ GetDay(weather2.list[0].dt) }}</h2>
+                  <h3>Temperature: {{weather2.list[0].main.temp}}&deg;</h3>
+                  <p>Vitesse du Vent: {{ weather2.list[0].wind.speed}}M/S</p>
+                </ion-item>
+                <ion-item>
+                    <ion-avatar item-start>
+                        <img src="http://openweathermap.org/img/w/{{weather2.list[1].weather[0].icon}}.png" alt="">
+                    </ion-avatar>
+                    <h2>Date: {{ GetDay(weather2.list[1].dt) }}</h2>
+                    <h3>Temperature: {{weather2.list[1].main.temp}}&deg;</h3>
+                    <p>Vitesse du Vent: {{ weather2.list[1].wind.speed}}M/S</p>
+                </ion-item>
+                <ion-item>
+                    <ion-avatar item-start>
+                        <img src="http://openweathermap.org/img/w/{{weather2.list[2].weather[0].icon}}.png" alt="">
+                    </ion-avatar>
+                    <h2>Date: {{ GetDay(weather2.list[2].dt) }}</h2>
+                    <h3>Temperature: {{weather2.list[2].main.temp}}&deg;</h3>
+                    <p>Vitesse du Vent: {{ weather2.list[2].wind.speed}}M/S</p>
+                </ion-item>
+                <ion-item>
+                    <ion-avatar item-start>
+                        <img src="http://openweathermap.org/img/w/{{weather2.list[3].weather[0].icon}}.png" alt="">
+                    </ion-avatar>
+                    <h2>Date: {{ GetDay(weather2.list[3].dt) }}</h2>
+                    <h3>Temperature: {{weather2.list[3].main.temp}}&deg;</h3>
+                    <p>Vitesse du Vent: {{ weather2.list[3].wind.speed}}M/S</p>
+                </ion-item>
+                <ion-item>
+                    <ion-avatar item-start>
+                        <img src="http://openweathermap.org/img/w/{{weather2.list[4].weather[0].icon}}.png" alt="">
+                    </ion-avatar>
+                    <h2>Date: {{ GetDay(weather2.list[4].dt) }}</h2>
+                    <h3>Temperature: {{weather2.list[4].main.temp}}&deg;</h3>
+                    <p>Vitesse du Vent: {{ weather2.list[4].wind.speed}}M/S</p>
+                </ion-item>
+            </ion-list>
+        </ion-grid>
+      </ion-slide>
+      <ion-slide>
+        <h1>Demain</h1>
+      </ion-slide>
+      <ion-slide>
+        <h1>Plus tard</h1>
+      </ion-slide>
+    </ion-slides>
+    
 </ion-content>

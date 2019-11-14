@@ -16,10 +16,17 @@ import { HelpPage } from '../pages/help/help';
 import { MenuPage } from '../pages/menu/menu';
 import { SettingsPage } from '../pages/settings/settings';
 import { CartePage } from '../pages/carte/carte';
+import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { WeatherProvider } from '../providers/weather/weather';
+import { Weather2Provider } from '../providers/weather/weather2';
+
+import { GooglemapComponent } from '../components/googlemap/googlemap';
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { PipesModule } from '../pipes/pipes.module';
+
 
 @NgModule({
   declarations: [
@@ -34,13 +41,16 @@ import { WeatherProvider } from '../providers/weather/weather';
     HelpPage,
     MenuPage,
     SettingsPage,
-    CartePage
+    CartePage,
+    GooglemapComponent,
+    ListPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -55,13 +65,16 @@ import { WeatherProvider } from '../providers/weather/weather';
     HelpPage,
     MenuPage,
     SettingsPage,
-    CartePage
+    CartePage,
+    ListPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    WeatherProvider
+    WeatherProvider,
+    Weather2Provider
   ]
 })
 export class AppModule {}

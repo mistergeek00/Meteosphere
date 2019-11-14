@@ -1,6 +1,6 @@
 page-login {
     ion-content{
-        background-image: url("../assets/imgs/Untitled.jpg");
+        background-image: url("../assets/imgs/fond2.png");
         background-size: cover;
         text-align: center;
     }
@@ -28,7 +28,7 @@ page-login {
     // }
 
     // input[type=text], input[type=password]{
-    //     background-color: #ffffff;
+    //     background-color: #f1f1f1;
     //     border: none;
     //     color: grey;
     //     padding: 15px 32px;
@@ -44,10 +44,10 @@ page-login {
     //     margin-bottom: 10px;
     // }
 
-    .slogan{
-        margin-top: -75px;
-        position: relative;
-    }
+    // .slogan{
+    //     margin-top: -75px;
+    //     position: relative;
+    // }
 
     .box {
         position: absolute;
@@ -55,9 +55,9 @@ page-login {
         transform: translate(-50%);
         width: 90%;
         padding: 30px;
-        background: rgba(0,0,0,.8);
+        background: rgba(0,0,0,.3);
         box-sizing: border-box;
-        box-shadow: 0 15px 25px rgba(0,0,0,.5);
+        box-shadow: 0 15px 25px rgba(0,0,0,.1);
         border-radius: 5px;
         margin: auto;
     }
@@ -65,7 +65,7 @@ page-login {
     .box h2 {
         margin: 0 0 20px;
         padding: 0;
-        color: #03a9f4;
+        color: #59B269;
         text-align: center;
         font-size: 17px;
     }
@@ -78,10 +78,10 @@ page-login {
         width: 100%;
         padding: 10px 0;
         font-size: 16px;
-        color: #fff;
+        color: #f1f1f1;
         margin-bottom: 20px;
         border: none;
-        border-bottom: 1px solid #fff;
+        border-bottom: 1px solid #f1f1f1;
         outline: none;
         background: transparent;
     }
@@ -92,7 +92,7 @@ page-login {
         left: 0;
         padding: 10px 0;
         font-size: 15px;
-        color: #fff;
+        color: #f1f1f1;
         pointer-events: none;
         transition: .5s; 
     }
@@ -101,7 +101,7 @@ page-login {
     .box .inputBox input:valid ~ label {
         top: -20px;
         left: 0;
-        color: #03a9f4;
+        color: #59B269;
         font-size: 12px;
     }
     
@@ -121,13 +121,13 @@ page-login {
         height: 35px;
     }
     .signup{
-        background: #00137E;
+        background: #3B7646;
     }
     .signin{
-        background: #03a9f4;
+        background: #59B269;
         margin-top: 10px;
     }
     .button-inner {
-        color: #fff;
+        color: #f1f1f1;
     }
 }

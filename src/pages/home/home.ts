@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, Slides } from 'ionic-angular';
 import { WeatherProvider } from '../../providers/weather/weather';
+import { Weather2Provider } from '../../providers/weather/weather2';
 import { Storage } from '@ionic/storage';
 
 import moment from 'moment';
@@ -11,15 +12,22 @@ import moment from 'moment';
 })
 export class HomePage {
   weather: any;
+  weather2: any;
   location:{
     city: string
   }
+
+  @ViewChild('SwipedTabsSlider') SwipedTabsSlider: Slides ;
+
+  SwipedTabsIndicator :any= null;
+  tabs:any=[];
   
   constructor(
     public navCtrl: NavController, 
     private weatherProvider: WeatherProvider,
+    private weather2Provider: Weather2Provider,
     private storage : Storage) {
-     
+      this.tabs=["Aujourd'hui","Demain","Plus tard"];
   }
 
 
@@ -29,12 +37,26 @@ export class HomePage {
         this.location = JSON.parse(val);
       }else{
         this.location = {
-          city: 'Fianarantsoa'
+          city: 'Antananarivo'
         }
       }
 
       this.weatherProvider.getWeather(this.location.city).subscribe(weather => {
         this.weather = weather;
+      });
+    });
+
+    this.storage.get('location').then((val) => {
+      if(val != null){
+        this.location = JSON.parse(val);
+      }else{
+        this.location = {
+          city: 'Antananarivo'
+        }
+      }
+
+      this.weather2Provider.getWeather(this.location.city).subscribe(weather2 => {
+        this.weather2 = weather2;
       });
     });
   }
@@ -237,7 +259,37 @@ export class HomePage {
       let nameday = weekday[d.getDay()];
       let day2 = moment(times*1000).format("DD");
       let namemonth = month[d.getMonth()];
-      let fulldate = nameday + " " + day2 + " " + namemonth + " " + d.getFullYear() + "\n" + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+      let fulldate = nameday + " " + day2 + " " + namemonth + " " + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
       return fulldate;
   }
+
+  GetDate = () => {
+    let dateFormat = require('dateformat');
+    let now = new Date();
+    return dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
+  }
+
+  ionViewDidEnter() {
+    this.SwipedTabsIndicator = document.getElementById("indicator");
+  }
+
+  selectTab(index) {    
+    this.SwipedTabsIndicator.style.webkitTransform = 'translate3d('+(100*index)+'%,0,0)';
+    this.SwipedTabsSlider.slideTo(index, 500);
+  }
+
+  updateIndicatorPosition() {
+      // this condition is to avoid passing to incorrect index
+  	if( this.SwipedTabsSlider.length()> this.SwipedTabsSlider.getActiveIndex())
+  	{
+  		this.SwipedTabsIndicator.style.webkitTransform = 'translate3d('+(this.SwipedTabsSlider.getActiveIndex() * 100)+'%,0,0)';
+  	}
+    
+    }
+
+  animateIndicator($event) {
+  	if(this.SwipedTabsIndicator)
+   	    this.SwipedTabsIndicator.style.webkitTransform = 'translate3d(' + (($event.progress* (this.SwipedTabsSlider.length()-1))*100) + '%,0,0)';
+  }
+  
 }

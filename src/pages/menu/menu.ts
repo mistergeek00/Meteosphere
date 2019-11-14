@@ -6,6 +6,10 @@ import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { SettingsPage } from '../settings/settings';
 import { LoginPage } from '../login/login';
+import { CartePage } from '../carte/carte';
+import { AboutPage } from '../about/about';
+import { ListPage } from '../list/list';
+import { HelpPage } from '../help/help';
 
 /**
  * Generated class for the MenuPage page.
@@ -55,8 +59,20 @@ export class MenuPage {
     });
 
   }
+  openMaps(){
+    this.navCtrl.push(CartePage);
+  }
+  list(){
+    this.navCtrl.push(ListPage);
+  }
   openSettings(){
     this.navCtrl.push(SettingsPage);
+  }
+  help(){
+    this.navCtrl.push(HelpPage);
+  }
+  about(){
+    this.navCtrl.push(AboutPage);
   }
   logout(){
     this.storage.clear();

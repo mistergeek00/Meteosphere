@@ -1,116 +1,161 @@
-.slides-page {
-    ion-slides {
-        height: auto !important;
-    }
+page-home{
+//     .slides-page {
+//         ion-slides {
+//             height: auto !important;
+//         }
 
-    .current-temp {
-        color: color($colors, lightwhite);
-        display: block;
-        padding-bottom: 80%;
-        width: 80%;
-        border-radius: 50%;
-        margin: 0 auto;
-        height: 0;
-    }
+//         .current-temp {
+//             color: color($colors, dark);
+//             display: block;
+//             padding-bottom: 80%;
+//             width: 80%;
+//             border-radius: 50%;
+//             margin: 0 auto;
+//             height: 0;
+//         }
 
-    ion-card {
-        background: rgba(27, 24, 24, 0.5);
-        color: color($colors, lightwhite);
-    }
+//         ion-card {
+//             background: rgba(27, 24, 24, 0.5);
+//             color: color($colors, dark);
+//         }
+        
+//         ion-avatar{
+//             display: inline-block !important;
+//             text-align: center !important
+//         }
+        
+//         .desc{
+//             font-size:15px;
+//             color: color($colors, dark);
+//             text-align: center;
+//         }
+
+//         .row-content {
+//             margin: 15px 0px 15px 0px;
+//             background: rgba(36, 32, 32, 0.4);
+//             color: white;
+//             height: 28px;
+//             border-radius: 7px;
+//             font-size: 12px;
+//         }
+
+//         .current-temp ion-grid {
+//             margin-top: 10px !important;
+//         }
+
+//         .card-ion {
+//             margin-top: 20px;
+//         }
+
+//         .card-ion ion-card-header {
+//             color: color($colors, dark);
+//             float: left !important;
+//             padding-left: 24px !important;
+//         }
+
+//         .card-ion .card-grid {
+//             .col-img{
+//                 position: relative !important;
+//                 top: -10px !important;
+//             }
+//         }
+
+//         .card-ion .card-list .rowDetail {
+//             font-size: 1.5rem !important;
+//             padding-bottom: 10px !important;
+//         }
+
+//         .card-ion .card-list .rowDetail .itemName {
+//             display: inline-block !important;
+//             text-align: left !important;
+//         }
+
+//         .card-ion .card-list .rowDetail .itemName ion-icon {
+//             float: left !important;
+//             padding: 0px 17px 0px 17px !important;
+//         }
+
+//         .card-ion .card-list .col_ion {
+//             padding-left: 50px !important;
+//             text-align: right !important;
+//         }
+//     }
+
+//     .bar-button-default-ios, .button-inner {
+//         color: color($colors, dark);
+//     }
+
+// // ion-content{
+// //     background-repeat: no-repeat;
+// //     background-position: top;
+// //     background-size: cover;
+// //     background-image: url("../assets/imgs/Untitled2.jpg");
+// // }
+
+//     .header{
+//         color: color($colors, dark);
+//         font-size: 20px;
+//     }
+//     .temperature{
+//         font-size:45px;
+//         text-align: center;
+//         font-weight: normal;
+//         margin: 0px 0px 2px 0px;
+//         color: color($colors, dark);
+//     }
+//     .location, .icon, .desc{
+//         text-align: center;
+//     }
     
-    ion-avatar{
-        display: inline-block !important;
-        text-align: center !important
-    }
-    
-    .desc{
-        font-size:15px;
-        color: color($colors, lightwhite);
+    .location{
+        font-size: 25px;
         text-align: center;
     }
-
-    .row-content {
-        margin: 15px 0px 15px 0px;
-        background: rgba(36, 32, 32, 0.4);
-        color: white;
-        height: 28px;
-        border-radius: 7px;
-        font-size: 12px;
+    .icon img{
+        width: 100px;
+        position: relative;
+        left: 60%;
+        margin-top: -10px;
+    }
+    .temperature{
+        position: absolute;
+        margin-top: 60px;
+        margin-left: 5px;
+        font-size: 55px;
+    }
+    .desc{
+        position: absolute;
+        font-size: 20px;
+        margin-left: 5px;
+        margin-top: 135px;
     }
 
-    .current-temp ion-grid {
-        margin-top: 10px !important;
+    .SwipedTabs-indicatorSegment
+    {
+        -webkit-transition: 0.3s all;
+        -moz-transition:  0.3s all;
+        -o-transition:  0.3s all;
+        transition:  0.3s all;
+        transform-origin: top 0 left 0;
+        height: 1px;
+	    position: relative;
+	    top: -2px;
+	    background-color: #222329 !important;
+    }
+    .SwipedTabs-tabs ion-segment-button
+    {
+    	border:none !important;
+    	color:gray!important;
+    	background-color:white!important;
+    }
+     .SwipedTabs-tabs ion-segment-button.SwipedTabs-activeTab
+    {
+        color:#222329 !important;
+    }
+    .SwipedTabs-tabs
+    {
+    	border-bottom: solid 1px #e6e6e6  !important;
     }
 
-    .card-ion {
-        margin-top: 20px;
-    }
 
-    .card-ion ion-card-header {
-        color: color($colors, lightwhite);
-        float: left !important;
-        padding-left: 24px !important;
-    }
-
-    .card-ion .card-grid {
-        .col-img{
-            position: relative !important;
-            top: -10px !important;
-        }
-    }
-
-    .card-ion .card-list .rowDetail {
-        font-size: 1.5rem !important;
-        padding-bottom: 10px !important;
-    }
-
-    .card-ion .card-list .rowDetail .itemName {
-        display: inline-block !important;
-        text-align: left !important;
-    }
-
-    .card-ion .card-list .rowDetail .itemName ion-icon {
-        float: left !important;
-        padding: 0px 17px 0px 17px !important;
-    }
-
-    .card-ion .card-list .col_ion {
-        padding-left: 50px !important;
-        text-align: right !important;
-    }
-}
-
-.bar-button-default-ios, .button-inner {
-    color: color($colors, lightwhite);
-}
-
-ion-content{
-    background-repeat: no-repeat;
-    background-position: top;
-    background-size: cover;
-    background-image: url("../assets/imgs/Untitled2.jpg");
-}
-
-.header{
-    color: color($colors, light);
-    font-size: 20px;
-}
-.temperature{
-    font-size:45px;
-    text-align: center;
-    font-weight: normal;
-    margin: 0px 0px 2px 0px;
-    color: color($colors, light);
-}
-.location, .icon, .desc{
-    text-align: center;
-}
-.icon img{
-    width: 100px;
-}
-.location{
-    font-size: 30px;
-}
-.desc{
-    font-size: 20px;
 }

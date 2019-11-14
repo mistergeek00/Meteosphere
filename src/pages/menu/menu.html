@@ -7,21 +7,29 @@
 
 <ion-content fullscreen class="bg-color">
     <img src="assets/imgs/logometeo.png" alt="">
-    <p style="color: #7e9eff; font-weight: bold; size: 20px;" class="slogan">Avec le temps toujours en avance</p>
+    <!-- <p style="color: #7e9eff; font-weight: bold; size: 20px;" class="slogan">Avec le temps toujours en avance</p> -->
 
   <ion-list>
     <!-- <ion-item-divider color="primary">
       Mon compte
     </ion-item-divider> -->
-    <button menuClose ion-item (click)="openSettings()">
+    <button menuClose ion-item (click)="openMaps()">
         Carte
         <ion-icon item-left name="map"></ion-icon>
+    </button>
+    <button menuClose ion-item (click)="list()">
+      Toutes les Villes
+      <ion-icon item-left name="md-list"></ion-icon>
     </button>
     <button menuClose ion-item (click)="openSettings()">
         Paramètres
         <ion-icon item-left name="settings"></ion-icon>
     </button>
-    <button menuClose ion-item (click)="openSettings()">
+    <button menuClose ion-item (click)="help()">
+      Aide
+      <ion-icon item-left name="help-circle"></ion-icon>
+    </button>
+    <button menuClose ion-item (click)="about()">
         À Propos
         <ion-icon item-left name="information-circle"></ion-icon>
     </button>
